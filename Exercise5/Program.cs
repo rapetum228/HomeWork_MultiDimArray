@@ -29,35 +29,31 @@ namespace Exercise5
 
             for (int i = 0; i < arr.GetLength(0); i++)
             {
-                int RowPlus = i+1;
-                if (RowPlus > arr.GetLength(0)-1)
-                {
-                    RowPlus = arr.GetLength(0)-1;
-                }
-                int RowMinus = i - 1;
-                if (RowMinus < 0)
-                {
-                    RowMinus = 0;
-                } 
+        
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
-                    int ColumnPlus = j + 1;
-                    if (ColumnPlus > arr.GetLength(1)-1)
-                    {
-                        ColumnPlus = arr.GetLength(1)-1;
-                    }
-                    int ColumnMinus = j - 1;
-                    if (ColumnMinus < 0)
-                    {
-                        ColumnMinus = 0;
-                    }
-                    if (arr[i, j] >= arr[RowPlus, j]
-                        && arr[i, j] >= arr[i, ColumnPlus]
-                        && arr[i, j] >= arr[i, ColumnMinus]
-                        && arr[i, j] >= arr[RowMinus, j])
+                    bool RP, RM, CP, CM;
+                    if (i + 1 > arr.GetLength(0) - 1)
+                        RP = true;
+                    else RP = arr[i, j] >= arr[i + 1, j];
+
+                    if (j + 1 > arr.GetLength(1) - 1)
+                        CP = true;
+                    else CP = arr[i, j] >= arr[i, j + 1];
+
+                    if (i - 1 < 0)
+                        RM = true;
+                    else RM = arr[i, j] >= arr[i-1, j];
+
+                    if (j - 1 < 0)
+                        CM = true;
+                    else CM = arr[i, j] >= arr[i , j - 1];
+
+                    if (RP && RM && CP && CM)
                     {
                         count++;
                     }
+                    
                 }
             }
             Console.WriteLine("\nРезультат: " + count);

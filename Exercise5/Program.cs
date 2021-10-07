@@ -13,7 +13,7 @@ namespace Exercise5
             Random rnd = new Random();
             int lengthArr = Convert.ToInt32(Console.ReadLine());
             int[,] arr = new int[lengthArr, lengthArr];
-
+            
             Console.WriteLine("\nМассив: ");
             for (int i = 0; i < arr.GetLength(0); i++)
             {

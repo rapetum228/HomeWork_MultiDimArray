@@ -18,21 +18,48 @@ namespace AdditionalExercise
             {
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
-                    arr[i, j] = rnd.Next(-1100, 1100);
-                    int temp = arr[i, j];
-                    string probel = " "; string zaProbel = "";
-                    while (Math.Abs(temp) < 1000)
-                    {
-                        temp *= 10;
-                        probel += " ";
-                        
-                    }
-                    if (arr[i, j] < 0)
-                    {
-                        zaProbel = " ";
-                    }
+                    arr[i, j] = rnd.Next(-1500, 1500);
+                    Console.Write($"{arr[i, j]}\t");
+                }
+                Console.WriteLine();
+            }
 
-                    Console.Write($"{probel}{arr[i, j]}{zaProbel}\t");
+
+            int maxElementArr = 0;
+
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    if (Math.Abs(maxElementArr) < Math.Abs(arr[i, j]))
+                    {
+                        maxElementArr = arr[i, j];
+                    }
+                }
+            }
+            
+            Console.WriteLine("\nМассив: ");
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    int tempMax = maxElementArr;
+                    string probel = "";
+                    int temp = arr[i, j];
+                    while (temp != 0)
+                    {
+                        tempMax /= 10;
+                        temp /= 10;
+                    }
+                    while (tempMax != 0)
+                    {
+                        tempMax /= 10;
+                        probel += " ";
+                    }
+                    if (arr[i, j] >= 0)
+                        probel += " ";
+
+                    Console.Write($"{probel}{arr[i, j]}\t");
                 }
                 Console.WriteLine();
             }

@@ -24,7 +24,7 @@ namespace Exercise5
                 }
                 Console.WriteLine();
             }
-
+            Console.WriteLine();
             int count = 0;
 
             for (int i = 0; i < arr.GetLength(0); i++)
@@ -32,26 +32,33 @@ namespace Exercise5
         
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
-                    bool RP, RM, CP, CM;
+                    bool rowPlus, rowMinus, columnPlus, columnMinus;
+
+                    rowPlus = (i + 1 > arr.GetLength(0) - 1) || (arr[i, j] >= arr[i + 1, j]);
+                    columnPlus = (j + 1 > arr.GetLength(1) - 1) || (arr[i, j] >= arr[i, j + 1]);
+                    rowMinus = (i - 1 < 0) || (arr[i, j] >= arr[i - 1, j]);
+                    columnMinus = (j - 1 < 0) || (arr[i, j] >= arr[i, j - 1]);
+                    /*
                     if (i + 1 > arr.GetLength(0) - 1)
-                        RP = true;
-                    else RP = arr[i, j] >= arr[i + 1, j];
+                        rowPlus = true;
+                    else rowPlus = arr[i, j] >= arr[i + 1, j];
 
                     if (j + 1 > arr.GetLength(1) - 1)
-                        CP = true;
-                    else CP = arr[i, j] >= arr[i, j + 1];
+                        columnPlus = true;
+                    else columnPlus = arr[i, j] >= arr[i, j + 1];
 
                     if (i - 1 < 0)
-                        RM = true;
-                    else RM = arr[i, j] >= arr[i-1, j];
+                        rowMinus = true;
+                    else rowMinus = arr[i, j] >= arr[i-1, j];
 
                     if (j - 1 < 0)
-                        CM = true;
-                    else CM = arr[i, j] >= arr[i , j - 1];
-
-                    if (RP && RM && CP && CM)
+                        columnMinus = true;
+                    else columnMinus = arr[i, j] >= arr[i , j - 1];
+                    */
+                    if (rowPlus && rowMinus && columnPlus && columnMinus)
                     {
                         count++;
+                        Console.WriteLine(arr[i, j]);
                     }
                     
                 }
